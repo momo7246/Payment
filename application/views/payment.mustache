@@ -1,0 +1,156 @@
+{{> header}}
+
+<div class="payment-container">
+	<div class="container">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading payment-header">
+					Total Amount: USD {{amount}}
+				</div>
+				<div class="panel-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#paypal" data-toggle="tab">Pay with PayPal</a>
+						</li>
+						<li class=""><a href="#gmo" data-toggle="tab">Pay with GMO</a>
+						</li>
+					</ul>
+
+					<div class="tab-content">
+						<div class="tab-pane active" id="paypal">
+							<div class="instruction">Please fill in all the required fields.</div>
+							<div class="paypal-error alert alert-danger hidden"></div>
+							<div class="paypal-success alert alert-success hidden">
+                            </div>
+							<form action="/payment/paypal/processPayment" role="form">
+								<input class="hidden" name="amount" value="{{amount}}">
+								<div class="col-xs-12 col-sm-6">
+									<div class="form-group">
+										<label class="form-mand">Card number</label>
+										<input name="cardNumber" class="form-control" required data-require="required" pattern="\d*">
+									</div>
+									<div class="form-group">
+										<div class="padding-left-0 col-xs-12 col-sm-6">
+											<label class="form-mand">Payment Types</label>
+											<select name="cardType" class="form-control" required data-require="required">
+												<option value="Visa">VISA</option>
+												<option value="MasterCard">MasterCard</option>
+											</select>
+										</div>
+										<div class="padding-top-10">
+											<img src="/payment/assets/images/visa_mastercard.gif" alt="payment type">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label>Expiration</label>
+												<div class="monthYear">
+													<div class="month">
+														<label class="form-mand">Month</label>
+														<select name="expMonth" class="form-control" required data-require="required">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
+													</div>
+													<div class="year">
+														<label class="form-mand">Year</label>
+														<select name="expYear" class="form-control" required data-require="required">
+															{{#expYear}}
+															<option value="{{.}}">{{.}}</option>
+															{{/expYear}}
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="padding-left-0 col-xs-6">
+											<div class="form-group">
+												<label class="form-mand">CVV Number</label>
+												<input name="cvv" class="form-control" data-require="required" >
+												<div class="instruction-small">
+													The last 3 digits displayed on the back of your card.
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<div class="padding-left-0 col-xs-6">
+										<div class="form-group">
+										<label class="form-mand">First name</label>
+										<input name="firstname" class="form-control" required data-require="required">
+									</div>
+									</div>
+									<div class="padding-right-0 col-xs-6">
+										<div class="form-group">
+											<label class="form-mand">Last name</label>
+											<input name="lastname" class="form-control" required data-require="required">
+										</div>
+									</div>
+									<div class="form-group">
+										<label>Address</label>
+										<input name="address" class="form-control">
+									</div>
+									<div class="group-addr">
+										<div class="first col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label class="form-mand">City</label>
+												<input name="city" class="form-control" required data-require="required">
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label class="form-mand">State</label>
+												<input name="state" class="form-control" required data-require="required">
+											</div>
+										</div>
+										<div class="last col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label class="form-mand">Street</label>
+												<input name="street" class="form-control" required data-require="required">
+											</div>
+										</div>
+									</div>
+									<div class="group-addr">
+										<div class="first col-sm-6 col-xs-12">
+											<div class="form-group">
+												<label class="form-mand">Zip</label>
+												<input name="zip" class="form-control" required data-require="required">
+											</div>
+										</div>
+										<div class="last col-sm-6 col-xs-12">
+											<div class="form-group">
+												<label class="form-mand">Country</label>
+												<select name="countryCode" class="form-control" required data-require="required">
+													{{#regions}}
+													<option value="{{code}}">{{name}}</option>
+													{{/regions}}
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<input type="submit" class="btn btn-primary btn-lg btn-block payment-btn" value="Pay with PayPal">
+							</form>
+						</div>
+						<div class="tab-pane" id="gmo">
+							<h4>GMO</h4>
+							In process
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{> footer}}

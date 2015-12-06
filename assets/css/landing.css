@@ -1,0 +1,60 @@
+.error {
+	margin-top: 10%
+}
+input.has-error, select.has-error {
+	border: 1px solid red;
+}
+.payment-container {
+	margin: 35px;
+}
+.payment-header {
+	background-color: #428bca !important;
+    color: white !important;
+    line-height: 3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.instruction {
+	padding: 15px;
+}
+.instruction-small {
+	color: #428bca;
+    font-size: 11px;
+}
+.form-mand:after {
+	content: '*';
+    color: #c22;
+    padding-left: .4em;
+}
+.padding-top-10 {
+	padding-top: 10;
+}
+.padding-left-0 {
+	padding-left: 0;
+}
+.padding-right-0 {
+	padding-right: 0;
+}
+.monthYear .month {
+	width: 25%;
+	float: left;
+	margin-right: 10px;
+}
+.monthYear .year {
+	width: 30%;
+	float: left;
+}
+@media (min-width: 768px) {
+	.group-addr .first {
+	    padding-left: 0;
+	}
+	.group-addr .last {
+	    padding-right: 0;
+	}
+}
+@media (max-width: 767px) {
+	.group-addr .col-xs-12 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
